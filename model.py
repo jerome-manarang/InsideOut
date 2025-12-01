@@ -117,3 +117,21 @@ def run_models(X, y, class_names=None):
     plt.show()
 
     return accuracies
+
+    # -------------------------------------------------------
+    # Compute F1 Scores
+    # -------------------------------------------------------
+    baseline_f1 = f1_score(y_test, y_pred_baseline, average='macro')
+    logreg_f1 = f1_score(y_test, y_pred_logreg, average='macro')
+    svm_f1 = f1_score(y_test, y_pred_svm, average='macro')
+    dt_f1 = f1_score(y_test, y_pred_dt, average='macro')
+
+    # -------------------------------------------------------
+    # Print Accuracy + F1 Table
+    # -------------------------------------------------------
+    print("\n=== Performance Comparison (Accuracy & F1) ===")
+    print(f"{'Model':25} {'Accuracy':10} {'F1-Score'}")
+    print(f"{'Baseline':25} {baseline_acc:.4f}     {baseline_f1:.4f}")
+    print(f"{'Logistic Regression':25} {logreg_acc:.4f}     {logreg_f1:.4f}")
+    print(f"{'Linear SVM + PCA':25} {svm_acc:.4f}     {svm_f1:.4f}")
+    print(f"{'Decision Tree':25} {dt_acc:.4f}     {dt_f1:.4f}")
